@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import TodoListTemplate from './Components/TodoListTemlplate';
 import Form from './Components/Form';
 import TodoItemList from './Components/TodoItemList';
+import Palette from './Components/Palette';
+
+const colors = ['#343a40', '#f03e3e', '#12b886', '#228ae6'];
 
 class App extends Component {
   id = 3
@@ -56,8 +59,13 @@ class App extends Component {
       todos: todos.filter(todo => todo.id !== id)
     });
   }
+  handleSelectColor = (color) => {
+    this.setState({
+      color
+    });
+  }
   render () {
-    const {input, todos} = this.state;
+    const {input, todos, colors } = this.state;
     const{
       handleChange,
       handleCreate,
