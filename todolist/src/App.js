@@ -65,13 +65,14 @@ class App extends Component {
     });
   }
   render () {
-    const {input, todos, colors } = this.state;
+    const {input, todos, color } = this.state;
     const{
       handleChange,
       handleCreate,
       handleKeyDown,
       handleToggle,
-      handleRemove
+      handleRemove,
+      handleSelectColor
     } = this;
 
     return (
@@ -79,13 +80,17 @@ class App extends Component {
       value={input}
       onKeyDown={this.handleKeyDown}
       onChange={handleChange}
-      onCreate={handleCreate}/>}>
+      onCreate={handleCreate}
+      color={color}/>}
+        palette={(
+          <Palette colors={colors} selected={color} onSelect={handleSelectColor}/>
+        )}>
         <TodoItemList todos={todos}
         onToggle={handleToggle}
         onRemove={handleRemove} />
 
       </TodoListTemplate>
-    )
+    );
   }
 }
 export default App;
